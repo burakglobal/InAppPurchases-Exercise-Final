@@ -37,7 +37,9 @@ class StoreManager: NSObject {
     
     //Let's create an array to hold our productsID
     
-    let purchasableProductsIds:Set<String> = ["super_credits_1000","com.swiftylab.unlock_backup_feature"] //For now we only have one product
+    
+    //Let's add our subscription id to all purchasable products for loading the product information
+    let purchasableProductsIds:Set<String> = ["com.swiftlab.myapp.monthly","super_credits_1000","com.swiftylab.unlock_backup_feature"] //For now we only have one product
     
     
     
@@ -50,6 +52,10 @@ class StoreManager: NSObject {
     
     let nonConsumablesProductsIds:Set<String> = ["com.swiftylab.unlock_backup_feature"];
     
+    
+    
+    //let's create an array only for subscriptions
+    let autoSubscriptionsIds:Set<String> = ["com.swiftlab.myapp.monthly"]
     
     //Let's create our first call method 
     
@@ -310,6 +316,25 @@ extension StoreManager:SKPaymentTransactionObserver{
             //Now we will post a notification so we can tell when the purchase process of Non-Consumable product is done so we can update our UI the table view and show Purchased instead of buy
             
             NotificationCenter.default.post(name: NSNotification.Name.init("DidPurchaseNonConsumableProductNotification"), object: nil, userInfo: ["id":trans.payment.productIdentifier])
+            
+        }
+        
+        
+        //If subscription
+        if self.autoSubscriptionsIds.contains(trans.payment.productIdentifier){
+            
+            //Now let's check our subscription since we only have one
+            
+            if trans.payment.productIdentifier == "com.swiftlab.myapp.monthly"{
+                
+             //User purchased this subscription
+                
+                //Now we need to tell the ReceiptManager to refresh the receipt so our app get updated with latest expires date of the subscription
+                
+                receiptManager.StartVaildatingReceipts()
+                
+            }
+            
             
         }
         

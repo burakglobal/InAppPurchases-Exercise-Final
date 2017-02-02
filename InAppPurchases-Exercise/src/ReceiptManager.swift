@@ -91,14 +91,14 @@ class ReceiptManager: NSObject {
                 //Start vaildating the receipt with iTunes server
                 self.vaildateData(data: receiptData)
                 
-                
+                  print("Receipt exist")
                 
             }catch{
                 print("Not able to get data from URL")
                 
             }
             
-            print("Receipt exist")
+          
             
         }catch{
             
@@ -217,7 +217,8 @@ class ReceiptManager: NSObject {
                 //Since we will only be interested in subscriptions
                 guard let expiryDate = inApp["expires_date_ms"] as? NSString else {
                     //It's not a subscription production since it has no expiry_date_ms field
-                    return
+                    //If it's not subscription then skip this item
+                    continue
                 }
                 
                 let purchaseDate = (inApp["purchase_date_ms"] as? NSString)?.doubleValue
@@ -232,6 +233,10 @@ class ReceiptManager: NSObject {
 
             }
             
+            
+            //Let's post a notification when the receipt is updated so we can update our UI the table view to see if user is subscribed
+            
+            NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "ReceiptDidUpdated"), object: nil)
             
         }else{
             

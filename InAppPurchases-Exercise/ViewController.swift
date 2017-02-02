@@ -29,15 +29,23 @@ class ViewController: UIViewController {
         
         //Let's add an observer so we get notifed whenever the products get loaded
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(self.SKProductsDidLoadFromiTunes), name: NSNotification.Name.init("SKProductsHaveLoaded"), object: nil)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.StoreManagerDidPurchaseNonConsumable(notification:)), name: NSNotification.Name.init("DidPurchaseNonConsumableProductNotification"), object: nil)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.SKProductsDidLoadFromiTunes), name: NSNotification.Name.init(rawValue: "ReceiptDidUpdated"), object: nil)
+        
         //We need also to call the function anyway when the view did load in case the products got loaded before our oberver is added
         
         SKProductsDidLoadFromiTunes()
     }
+    
+    
+    
+    
     
     func StoreManagerDidPurchaseNonConsumable(notification:Notification){
         
@@ -52,7 +60,7 @@ class ViewController: UIViewController {
         
     }
     
-    
+    //Since this function already update our UI. Let's use it for our receiptDidUpdated
     func SKProductsDidLoadFromiTunes(){
         
         
@@ -161,6 +169,23 @@ extension ViewController:UITableViewDelegate,UITableViewDataSource{
             cell.productStatus.setTitle("Purchased", for: .normal)
             cell.productStatus.setTitleColor(UIColor.green, for: .normal)
         }
+        
+        
+        //Let's show subscribe button instead of buy
+        
+        if StoreManager.shared.autoSubscriptionsIds.contains(product.productIdentifier){
+            
+             cell.productStatus.setTitle("Subscribe", for: .normal)
+            
+            //Let's change the status of the button if the user is subscribed
+            
+            if StoreManager.shared.receiptManager.isSubscribed{
+                cell.productStatus.setTitle("Subscribed", for: .normal)
+                cell.productStatus.setTitleColor(UIColor.green, for: .normal)
+            }
+
+        }
+        
         
         
         return cell
