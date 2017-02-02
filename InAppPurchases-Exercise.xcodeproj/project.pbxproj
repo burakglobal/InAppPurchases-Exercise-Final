@@ -18,6 +18,7 @@
 		DCADFA8E1E3D48CF00803597 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADFA8D1E3D48CF00803597 /* CustomButton.swift */; };
 		DCADFA901E3D4C5C00803597 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADFA8F1E3D4C5C00803597 /* StoreManager.swift */; };
 		DCD687E01E37AA0500E78F36 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD687DF1E37AA0500E78F36 /* StoreKit.framework */; };
+		DCDA5F831E43FC3500C72950 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = DCDA5F821E43FC3500C72950 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DCADFA8D1E3D48CF00803597 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomButton.swift; path = src/views/CustomButton.swift; sourceTree = "<group>"; };
 		DCADFA8F1E3D4C5C00803597 /* StoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoreManager.swift; path = src/StoreManager.swift; sourceTree = "<group>"; };
 		DCD687DF1E37AA0500E78F36 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DCDA5F821E43FC3500C72950 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 		DC26EC261E36886D008DFA3F = {
 			isa = PBXGroup;
 			children = (
+				DCDA5F821E43FC3500C72950 /* README.md */,
 				DC26EC311E36886D008DFA3F /* InAppPurchases-Exercise */,
 				DC26EC301E36886D008DFA3F /* Products */,
 				DC26EC4E1E36BF08008DFA3F /* Frameworks */,
@@ -173,6 +176,7 @@
 				DC26EC4A1E3696FC008DFA3F /* ProductTableViewCell.swift in Sources */,
 				DC26EC351E36886D008DFA3F /* ViewController.swift in Sources */,
 				DCADFA901E3D4C5C00803597 /* StoreManager.swift in Sources */,
+				DCDA5F831E43FC3500C72950 /* README.md in Sources */,
 				DC26EC331E36886D008DFA3F /* AppDelegate.swift in Sources */,
 				DC64C07E1E427A4900595C38 /* ReceiptManager.swift in Sources */,
 				DCADFA8E1E3D48CF00803597 /* CustomButton.swift in Sources */,
