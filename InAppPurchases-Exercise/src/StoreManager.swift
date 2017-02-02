@@ -53,6 +53,9 @@ class StoreManager: NSObject {
     
     //Let's create our first call method 
     
+    //Let's make our receipt manager class
+    var receiptManager:ReceiptManager = ReceiptManager()
+    
     func setup(){
         
         //In order to display the products for the user, the first thing we need to is to request our SKProduct from the store so we can show the product in our app and make it available for the user to purchase.
@@ -70,6 +73,7 @@ class StoreManager: NSObject {
         //We need to become the delegate for the SKPaymentTransaction
         
         SKPaymentQueue.default().add(self)
+        
         
     }
     
